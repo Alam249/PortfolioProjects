@@ -127,17 +127,17 @@ Order by 2
 
 Select SoldAsVacant
 , CASE When SoldAsVacant = 'Y' THEN 'Yes'
-	   When SoldAsVacant = 'N' THEN 'No'
-	   ELSE SoldAsVacant
-	   END
+	When SoldAsVacant = 'N' THEN 'No'
+	ELSE SoldAsVacant
+	END
 From PortfolioProject.dbo.NashvilleHousing
 
 
 Update PortfolioProject.dbo.NashvilleHousing
 SET SoldAsVacant = CASE When SoldAsVacant = 'Y' THEN 'Yes'
-							   When SoldAsVacant = 'N' THEN 'No'
-							   ELSE SoldAsVacant
-							   END
+			When SoldAsVacant = 'N' THEN 'No'
+			ELSE SoldAsVacant
+			END
 
 
 
@@ -151,12 +151,12 @@ WITH RowNumCTE AS (
 Select *,
 	ROW_NUMBER() OVER(
 	PARTITION by ParcelID,
-				 PropertyAddress,
-				 SalePrice,
-				 SaleDate,
-				 LegalReference
-				 Order by UniqueID
-							) row_num
+		     PropertyAddress,
+		     SalePrice,
+		     SaleDate,
+		     LegalReference
+		     Order by UniqueID
+		     ) row_num
 From PortfolioProject.dbo.NashvilleHousing
 --Order by ParcelID
 )
